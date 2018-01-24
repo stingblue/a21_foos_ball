@@ -1,0 +1,25 @@
+<% title "Game" %>
+ 
+<h3><%=link_to(h("Back to List"), games_path()) %></h3>
+
+<table class='table'>
+  <tr><td>id</td> <td><%= @game.id %></td></tr>
+  <tr><td>team 1</td> <td><%= @teams[0] %></td></tr>
+  <tr><td>team 2</td> <td><%= @teams[1] %></td></tr>
+  <tr><td>score</td> <td><%= @game.score %></td></tr>
+  <tr><td>winner team</td> <td><%= @teams[2] %></td></tr>
+  <tr><td>created at</td> <td><%= @game.created_at %></td></tr>
+  <tr><td>updated at</td> <td><%= @game.updated_at %></td></tr>
+</table>
+
+<% if @match.present? %>
+  <h3>Game belong to: </h3>
+    <p><strong>Match ID <%=h(@match.id) %></strong>: <%=h @match.title %>
+<% end %>
+
+</br>
+</br>
+<p>
+  Admin Actions:
+<%= link_to 'Delete', game_path(@game), :method => :delete, :confirm => "Are you sure?", :class => "btn btn-danger" %>
+</p>

@@ -13,6 +13,8 @@
     <%= yield(:head) %>
   </head>
   <body>
+  <!-- if logged will show home menu-->
+  <p><%=link_to(h('Home'), root_path()) %></p>
     <div id="container" style='padding:20px'>
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>

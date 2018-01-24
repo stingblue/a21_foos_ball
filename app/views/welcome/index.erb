@@ -1,6 +1,30 @@
-<h1>Getting Started with Ruby</h1>
+<h1>Managements</h1>
 
 <p>
   Welcome!
 </p>
 
+<table class='table'>
+  <tr><td><%=link_to(h('Users'), users_path()) %></td></tr>
+  <tr><td><%=link_to(h('Teams'), teams_path()) %></td></tr>
+  <tr><td><%=link_to(h('Games'), games_path()) %></td></tr>
+  <tr><td><%=link_to(h('Matchs'), matchs_path()) %></td></tr>
+</table>
+
+<table class='table'>
+  <th>
+	<td>RANKING</td>
+	<td>Team</td>
+	<td>Percent win</td>
+  <th>
+<% ranking = 1 %>
+<% for k ,v in @ret do %>
+	<tr>
+		<td></td>
+		<td><%= ranking %></td>
+		<td><%= k %></td>
+		<td><%= v.values.first.present?  ? (v.values.first.to_f/@count_matchs)*100 : 0 %></td>
+		<% ranking += 1 %>
+    </tr>
+<% end %>
+</table>

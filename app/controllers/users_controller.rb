@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
 		@user = User.find params[:id]
+		@teams = @user.teams.order(:created_at).paginate :page => params[:page], :per_page => 2
   end
 
   def new

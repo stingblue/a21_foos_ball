@@ -1,0 +1,29 @@
+<%= form_for(@game) do |form| %>
+  <p>
+    <%= form.label :score %><br/>
+    <%= form.number_field :score, min:0, max: 10 %>
+  </p>
+
+  <p>
+    <%= form.label 'Team 1' %><br/>
+    <%= form.collection_select :team1_id, @all_teams, :id, :name, include_blank: false %>
+  </p>
+  
+  <p>
+    <%= form.label 'Team 2' %><br/>
+    <%= form.collection_select :team2_id, @all_teams, :id, :name, include_blank: false %>
+  </p>
+
+  <p>
+    <%= form.label 'Winner Team' %><br/>
+    <%= form.collection_select :winner_team_id, @all_teams, :id, :name, include_blank: false %>
+  </p>
+
+  <p>
+    <%= form.label 'Belong to match' %><br/>
+    <%= form.collection_select :match_id, @all_matchs, :id, :title, include_blank: false %>
+  </p>
+
+
+  <%= form.submit %>
+<% end %>

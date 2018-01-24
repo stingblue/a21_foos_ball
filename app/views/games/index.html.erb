@@ -1,0 +1,26 @@
+<% title 'Games' %>
+<p>
+  Admin actions: <%= link_to 'New Game', new_game_path, :class => "btn btn-primary" %>
+</p>
+<table class='table'>
+  <th>
+	<td>Team 1</td>
+	<td>Team 2</td>
+	<td>Score</td>
+	<td>Winner</td>
+	<td>Belong to Match</td>
+	<td></td>
+  <th>
+<% for game in @games do %>
+	<tr>
+	  <td><%=link_to(h(game.id), game_path(game)) %></td>
+	  <td><%=h @game_teams[game.id][0] %></td>
+	  <td><%=h @game_teams[game.id][1] %></td>
+	  <td><%=h game.score %></td>
+	  <td><%=h @game_teams[game.id][2] %></td>
+	  <td><%=h @game_matchs[game.id][0] %></td>
+	  <td><%= link_to 'Edit', edit_game_path(game) %></td>
+    </tr>
+<% end %>
+</table>
+<%= will_paginate @games %>

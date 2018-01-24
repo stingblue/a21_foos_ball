@@ -1,0 +1,38 @@
+<% title @team.name %>
+ 
+<h3><%=link_to(h("Back to List"), teams_path()) %></h3>
+
+<table class='table'>
+  <tr><td>id</td> <td><%= @team.id %></td></tr>
+  <tr><td>name</td> <td><%= @team.name %></td></tr>
+  <tr><td>created at</td> <td><%= @team.created_at %></td></tr>
+  <tr><td>updated at</td> <td><%= @team.updated_at %></td></tr>
+</table>
+
+<% if @users.present? %>
+  <h3>Player :</h3>
+ 
+  <% for user in @users do %>
+  <table class='table'>
+    <tr><td><strong>ID <%=h(user.id) %></strong>: <%=h user.first_name %></td></tr>
+  </table>
+  <% end %>
+ 
+  <%= will_paginate @users %>
+<% else %>
+	<h3>Player: 0</h3>
+<% end %>
+
+<h3>Add new player to team </h3>
+<%= form_for([@team, User.new]) do |form| %>
+  <%= form.collection_select :id, @all_users, :id, :first_name, include_blank: false %>
+ 
+  <%= form.submit 'Add' %>
+<% end %>
+
+</br>
+</br>
+<p>
+  Admin Actions:
+<%= link_to 'Delete', team_path(@team), :method => :delete, :confirm => "Are you sure?", :class => "btn btn-danger" %>
+</p>

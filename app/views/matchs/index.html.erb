@@ -1,0 +1,20 @@
+<% title 'Matchs' %>
+<p>
+  Admin actions: <%= link_to 'New Match', new_match_path, :class => "btn btn-primary" %>
+</p>
+<table class='table'>
+  <th>
+	<td>Title</td>
+	<td>Winner Team</td>
+	<td></td>
+  <th>
+<% for mtch in @matchs do %>
+	<tr>
+	  <td><%=link_to(h(mtch.id), match_path(mtch)) %></td>
+	  <td><%=h mtch.title %></td>
+	  <td><%=h @winner_teams[mtch.id] %></td>
+	  <td><%= link_to 'Edit', edit_match_path(mtch) %></td>
+    </tr>
+<% end %>
+</table>
+<%= will_paginate @matchs %>

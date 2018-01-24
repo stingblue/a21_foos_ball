@@ -1,0 +1,14 @@
+<% title 'Teams' %>
+<p>
+  Admin actions: <%= link_to 'New Team', new_team_path, :class => "btn btn-primary" %>
+</p>
+<table class='table'>
+<% for team in @teams do %>
+	<tr>
+	  <td><%=link_to(h(team.name), team_path(team)) %></td>
+	  <td><%=h team.name %></td>
+	  <td><%= link_to 'Edit', edit_team_path(team) %></td>
+    </tr>
+<% end %>
+</table>
+<%= will_paginate @teams %>

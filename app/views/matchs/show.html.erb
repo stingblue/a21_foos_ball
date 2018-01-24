@@ -1,0 +1,31 @@
+<% title 'Match' %>
+ 
+<h3><%=link_to(h("Back to List"), matchs_path()) %></h3>
+
+<table class='table'>
+  <tr><td>id</td> <td><%= @match.id %></td></tr>
+  <tr><td>title</td> <td><%= @match.title %></td></tr>
+  <tr><td>created at</td> <td><%= @match.created_at %></td></tr>
+  <tr><td>updated at</td> <td><%= @match.updated_at %></td></tr>
+</table>
+
+<% if @games.present? %>
+  <h3>Games :</h3>
+ 
+  <% for game in @games do %>
+  <table class='table'>
+    <tr><td><strong>ID <%=h(game.id) %></strong>: <%=h game.id %></td></tr>
+  </table>
+  <% end %>
+ 
+  <%= will_paginate @games %>
+<% else %>
+	<h3>Game: 0</h3>
+<% end %>
+
+</br>
+</br>
+<p>
+  Admin Actions:
+<%= link_to 'Delete', match_path(@match), :method => :delete, :confirm => "Are you sure?", :class => "btn btn-danger" %>
+</p>

@@ -20,15 +20,16 @@ ActiveRecord::Schema.define(version: 20180124122431) do
     t.integer  "team1_id"
     t.integer  "team2_id"
     t.integer  "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "winner_team_id"
+    t.integer  "match_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "matches", force: :cascade do |t|
-    t.integer  "game_id",        null: false
-    t.integer  "winner_team_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "team_users", force: :cascade do |t|
