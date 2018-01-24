@@ -1,0 +1,15 @@
+<% title 'Users' %>
+<p>
+  Admin actions: <%= link_to 'New User', new_user_path, :class => "btn btn-primary" %>
+</p>
+<table class='table'>
+<% for user in @users do %>
+	<tr>
+	  <td><%=link_to(h(user.first_name), user_path(user)) %></td>
+	  <td><%=h user.first_name %></td>
+	  <td><%= user.last_name %></td>
+	  <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    </tr>
+<% end %>
+</table>
+<%= will_paginate @users %>

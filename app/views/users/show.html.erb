@@ -1,0 +1,15 @@
+<% title @user.first_name %>
+ 
+<h3><%=link_to(h("Back to List"), users_path(@user)) %></h3>
+
+<table class='table'>
+  <tr><td>id</td> <td><%= @user.id %></td></tr>
+  <tr><td>first name</td> <td><%= @user.first_name %></td></tr>
+  <tr><td>last name</td> <td><%= @user.last_name %></td></tr>
+  <tr><td>created at</td> <td><%= @user.created_at %></td></tr>
+  <tr><td>updated at</td> <td><%= @user.updated_at %></td></tr>
+</table>
+<p>
+  Admin Actions:
+<%= link_to 'Delete', user_path(@user), :method => :delete, :confirm => "Are you sure?", :class => "btn btn-danger" %>
+</p>
